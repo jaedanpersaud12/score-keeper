@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Score Keeper</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game">
+        <h1><span id="player-one-score">0</span> - <span id="player-two-score">0</span></h1>
+        <div id="playingto">
+            <label for="score-cap">Playing to: </label>
+            <select name="Playing to" id="score-cap">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="7">7</option>
+        <option value="9">9</option>
+        <option value="11">11</option>
+    </select>
+        </div>
+        <div id="buttons">
+            <button id="player-one-button">Player One(A)</button>
+            <button id="player-two-button">Player Two(L)</button>
+            <button id="reset">Reset(R)</button>
+        </div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
