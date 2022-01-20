@@ -59,7 +59,7 @@ document.body.addEventListener('keydown', (e) => {
         case "KeyA":
             incrementScore(p1, p2);
             break;
-        case "KeyL":
+        case "KeyD":
             incrementScore(p2, p1);
             break;
         case "KeyR":
