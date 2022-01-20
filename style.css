@@ -55,6 +55,10 @@ h1 {
     background-color: rgb(55, 55, 192);
 }
 
+#player-one-button:disabled {
+    background-color: rgb(101, 101, 185);
+}
+
 #player-two-button {
     background-color: rgb(226, 40, 40);
     border: none;

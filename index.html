@@ -3,29 +3,41 @@
 
 <head>
     <title>Score Keeper</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
 <body>
-    <div id="game">
-        <h1><span id="player-one-score">0</span> - <span id="player-two-score">0</span></h1>
-        <div id="playingto">
-            <label for="score-cap">Playing to: </label>
-            <select name="Playing to" id="score-cap">
-        <option value="3">3</option>
-        <option value="5">5</option>
-        <option value="7">7</option>
-        <option value="9">9</option>
-        <option value="11">11</option>
-    </select>
+    <div class="columns">
+        <div class="column is-half is-offset-one-quarter ">
+            <div class="card">
+                <header class="class-card-header">
+                    <p class="card-header-title">
+                        Score Keeper
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <h1 class="title is-1"><span id="player-one-score">0</span> - <span id="player-two-score">0</span></h1>
+                        <label class="label is-large is-inline" for="score-cap">Playing to: </label>
+                        <div class="select is-rounded">
+                            <select name="Playing to" id="score-cap">        
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="9">9</option>
+                            <option value="11">11</option>
+                        </div>
+                        </select>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <button class="button is-success card-footer-item" id="player-one-button">Player One(A)</button>
+                        <button class="button is-danger card-footer-item" id="player-two-button">Player Two(L)</button>
+                        <button class="button is-light card-footer-item" id="reset">Reset(R)</button>
+                    </footer>
+                </div>
+            </div>
         </div>
-        <div id="buttons">
-            <button id="player-one-button">Player One(A)</button>
-            <button id="player-two-button">Player Two(L)</button>
-            <button id="reset">Reset(R)</button>
-        </div>
-    </div>
 
 </body>
 <script src="script.js"></script>

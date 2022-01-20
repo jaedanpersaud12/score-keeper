@@ -1,20 +1,25 @@
-const p1Score = document.querySelector('#player-one-score')
-const p2Score = document.querySelector('#player-two-score')
-const scoreCap = document.querySelector('#score-cap')
+const p1 = {
+    display: document.querySelector('#player-one-score'),
+    button: document.querySelector('#player-one-button'),
+    score: 0
+}
 
-const p1Button = document.querySelector('#player-one-button')
-const p2Button = document.querySelector('#player-two-button')
+const p2 = {
+    display: document.querySelector('#player-two-score'),
+    button: document.querySelector('#player-two-button'),
+    score: 0
+}
+
+const scoreCap = document.querySelector('#score-cap')
 const resetButton = document.querySelector('#reset')
 
-let p1Count = 0
-let p2Count = 0
 let winningScore = parseInt(scoreCap.value)
 
 let isGameOver = false;
 
-p1Button.addEventListener('click', () => incrementP1())
+p1.button.addEventListener('click', () => incrementScore(p1, p2))
 
-p2Button.addEventListener('click', () => incrementP2())
+p2.button.addEventListener('click', () => incrementScore(p2, p1))
 
 scoreCap.addEventListener('change', () => {
     winningScore = parseInt(scoreCap.value)
@@ -23,51 +28,42 @@ scoreCap.addEventListener('change', () => {
 
 resetButton.addEventListener('click', reset)
 
-function incrementP1() {
+function incrementScore(winner, opponent) {
     if (!isGameOver) {
-        p1Count++
-        if (p1Count === winningScore) {
-            isGameOver = true;
-            p1Score.classList.add('green')
-            p2Score.classList.add('red')
-        }
+        winner.score++
+            if (winner.score === winningScore) {
+                isGameOver = true;
+                winner.display.classList.add('has-text-success')
+                opponent.display.classList.add('has-text-danger')
+                winner.button.disabled = true
+                opponent.button.disabled = true
+            }
     }
-    p1Score.textContent = p1Count
-}
-
-function incrementP2() {
-    if (!isGameOver) {
-        p2Count++
-        if (p2Count === winningScore) {
-            isGameOver = true;
-            p1Score.classList.add('red')
-            p2Score.classList.add('green')
-        }
-    }
-    p2Score.textContent = p2Count
+    winner.display.textContent = winner.score
 }
 
 function reset() {
     isGameOver = false;
-    p1Count = 0
-    p2Count = 0
-    p1Score.textContent = 0;
-    p2Score.textContent = 0;
-    p1Score.classList.remove('green', 'red')
-    p2Score.classList.remove('green', 'red')
+    p1.score = 0
+    p2.score = 0
+    p1.display.textContent = 0;
+    p2.display.textContent = 0;
+    p1.display.classList.remove('has-text-success', 'has-text-danger')
+    p2.display.classList.remove('has-text-success', 'has-text-danger')
+    p1.button.disabled = false
+    p2.button.disabled = false
 }
 
 document.body.addEventListener('keydown', (e) => {
     switch (e.code) {
         case "KeyA":
-            incrementP1();
+            incrementScore(p1, p2);
             break;
         case "KeyL":
-            incrementP2();
+            incrementScore(p2, p1);
             break;
         case "KeyR":
             reset();
             break
     }
-
 })
